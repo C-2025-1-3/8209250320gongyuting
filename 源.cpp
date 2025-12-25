@@ -1,22 +1,16 @@
 #include<iostream>
 using namespace std;
+int* f()
+{
+	int *list=new int[4] { 1,2,3,4 };
+	return list;
+}
 int main()
 {
-	bool arr[100] = { false };
-	for (int i = 0; i < 100; i++)
-	{
-		arr[i] = !arr[i];
-	}
-	for (int s = 2;s<100; s++)
-	{
-		arr[s] = !arr[s];
-		for (int L = s; L + s + 1 < 100; L = L + s + 1)
-		{
-			arr[L + s + 1] = !arr[L + s + 1];
-		}
-	}
-	for (int i = 0; i < 100; i++)
-	{
-		cout << arr[i] << " ";
-	}
+
+	int* p = f();//函数执行结束以后会销毁地址，变成野指针
+	cout << p[0] << endl;
+	cout << p[1] << endl;
+	delete[]p;
+	return 0;
 }
